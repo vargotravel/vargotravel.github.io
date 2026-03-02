@@ -1,1 +1,357 @@
-Hello World!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vargo Travel | Luxury Travel Advisor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #b59a6a;
+      --gold-light: #d4b88a;
+      --dark: #0e0e0e;
+      --charcoal: #1a1a1a;
+      --mid: #2e2e2e;
+      --cream: #f7f3ee;
+      --text-light: #c8bfb2;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 60px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+      transition: background 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.85) 100%),
+        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80') center/cover no-repeat;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 820px; padding: 0 24px; }
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 28px;
+      letter-spacing: 0.02em;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+    .hero-sub {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      max-width: 520px;
+      margin: 0 auto 48px;
+      letter-spacing: 0.05em;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .btn:hover { background: var(--gold); color: var(--dark); }
+    .btn-solid { background: var(--gold); color: var(--dark); }
+    .btn-solid:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+    /* DIVIDER */
+    .gold-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+    }
+
+    /* PHILOSOPHY */
+    .philosophy {
+      padding: 120px 60px;
+      text-align: center;
+      background: var(--charcoal);
+    }
+    .section-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .philosophy h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      font-style: italic;
+      max-width: 700px;
+      margin: 0 auto 24px;
+      line-height: 1.3;
+    }
+    .philosophy p {
+      max-width: 580px;
+      margin: 0 auto;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* BENEFITS */
+    .benefits {
+      padding: 120px 60px;
+      background: var(--dark);
+    }
+    .benefits-header { text-align: center; margin-bottom: 80px; }
+    .benefits-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .benefits-header p { color: var(--text-light); font-size: 0.88rem; max-width: 500px; margin: 0 auto; }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .benefit-card {
+      background: var(--charcoal);
+      padding: 48px 40px;
+      transition: background 0.3s;
+    }
+    .benefit-card:hover { background: var(--mid); }
+    .benefit-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      color: var(--gold);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .benefit-card h3 {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      color: var(--white);
+    }
+    .benefit-card p { color: var(--text-light); font-size: 0.85rem; line-height: 1.8; }
+
+    /* CTA SECTION */
+    .cta-section {
+      padding: 140px 60px;
+      text-align: center;
+      background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&q=80') center/cover fixed;
+    }
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .cta-section p { color: var(--text-light); max-width: 520px; margin: 0 auto 48px; font-size: 0.88rem; }
+    .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer {
+      padding: 60px;
+      background: #080808;
+      text-align: center;
+      border-top: 1px solid #1f1f1f;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .footer-logo span { color: var(--gold); }
+    footer p { color: #555; font-size: 0.75rem; letter-spacing: 0.1em; }
+    .footer-links { display: flex; gap: 32px; justify-content: center; margin: 24px 0; list-style: none; }
+    .footer-links a {
+      color: #666;
+      text-decoration: none;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { gap: 24px; }
+      .philosophy, .benefits, .cta-section { padding: 80px 24px; }
+      footer { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">VARGO <span>TRAVEL</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Certified Travel Advisor &nbsp;·&nbsp; 30 Years of Firsthand Experience</p>
+      <h1>Travel Well.<br><em>Spend Wisely.</em></h1>
+      <p class="hero-sub">Luxury journeys crafted around your points, miles, and budget — by someone who has been there.</p>
+      <a href="contact.html" class="btn btn-solid">Start Planning Your Trip</a>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <p class="section-eyebrow">The Vargo Philosophy</p>
+    <div class="gold-divider"></div>
+    <h2>"Indulgent, seamless travel — without the price tag."</h2>
+    <p>I specialize in helping travelers maximize credit card points, airline miles, and smart cash decisions to unlock experiences that feel far beyond what they paid. Every trip I design is one I'd be proud to take myself.</p>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits">
+    <div class="benefits-header">
+      <p class="section-eyebrow">Why Book With Me</p>
+      <div class="gold-divider"></div>
+      <h2>The Difference a Trusted Advisor Makes</h2>
+      <p>From exclusive perks to personalized itineraries, here's what you get when we work together.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-number">01</div>
+        <h3>Exclusive Perks</h3>
+        <p>As a certified travel advisor, I can secure upgrades, daily breakfast, late checkout, and discounts — all at no additional cost to you.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-number">02</div>
+        <h3>30 Years of Experience</h3>
+        <p>I bring firsthand knowledge from decades of world travel to every itinerary I build. You benefit from every trip I've taken.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-number">03</div>
+        <h3>Points & Miles Mastery</h3>
+        <p>I help you get maximum value from your credit card rewards, airline miles, and cash to make luxury travel accessible.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-number">04</div>
+        <h3>Personalized Itineraries</h3>
+        <p>Every trip comes with a custom itinerary optimized for mobile, so everything you need is in your pocket.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-number">05</div>
+        <h3>Advisor Network</h3>
+        <p>Beyond my own expertise, I tap into a trusted network of travel specialists to ensure every destination is covered.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-number">06</div>
+        <h3>Flight Monitoring</h3>
+        <p>I recommend tools to help you monitor your flights, so you're always one step ahead of delays or changes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <p class="section-eyebrow">Ready to Go?</p>
+    <div class="gold-divider"></div>
+    <h2>Let's Plan Your Next Journey</h2>
+    <p>Have a trip coming up — or just dreaming of one? Tell me where you want to go and I'll show you what's possible.</p>
+    <div class="btn-group">
+      <a href="contact.html" class="btn btn-solid">Get In Touch</a>
+      <a href="about.html" class="btn">Meet Mike</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">VARGO <span>TRAVEL</span></div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p>&copy; 2026 Vargo Travel. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+</body>
+</html>
