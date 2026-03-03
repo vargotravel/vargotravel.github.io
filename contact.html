@@ -7,6 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+<script async src="https://tally.so/widgets/embed.js"></script>
+
+
 </head>
 <body>
 
@@ -36,17 +39,17 @@
       <h2>Let's Build Something Unforgettable</h2>
       <p>Whether you're dreaming of a destination or ready to book, I'm here to help you travel better than you thought possible.</p>
 
-      <div class="contact-detail">
+      <!--div class="contact-detail">
         <div class="contact-detail-label">Email</div>
         <div class="contact-detail-value">
           <a href="mailto:">tbd</a>
         </div>
-      </div>
+      </div-->
 
-      <div class="contact-detail">
+      <!--div class="contact-detail">
         <div class="contact-detail-label">Response Time</div>
         <div class="contact-detail-value">Within 24–48 hours</div>
-      </div>
+      </div-->
 
       <div class="contact-detail">
         <div class="contact-detail-label">Based In</div>
@@ -63,66 +66,13 @@
     <!-- RIGHT: FORM -->
     <div class="contact-form">
       <div id="form-container">
-        <p class="form-section-label">Your Information</p>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" id="first-name" placeholder="Jane" />
-          </div>
-          <div class="form-group">
-            <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" placeholder="Smith" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="jane@example.com" />
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone (optional)</label>
-          <input type="tel" id="phone" placeholder="+1 (555) 000-0000" />
-        </div>
+        <p class="form-section-label">Click the button below to fill out your information.</p>
 
-        <p class="form-section-label">Trip Details</p>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="destination">Destination</label>
-            <input type="text" id="destination" placeholder="e.g. Italy, Japan, Maldives" />
-          </div>
-          <div class="form-group">
-            <label for="travel-date">Approximate Travel Date</label>
-            <input type="text" id="travel-date" placeholder="e.g. October 2026" />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="travelers">Number of Travelers</label>
-            <select id="travelers">
-              <option value="" disabled selected>Select</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3–4</option>
-              <option>5+</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="budget">Approximate Budget</label>
-            <select id="budget">
-              <option value="" disabled selected>Select</option>
-              <option>Under $2,500</option>
-              <option>$2,500 – $5,000</option>
-              <option>$5,000 – $10,000</option>
-              <option>$10,000+</option>
-              <option>Flexible / Using Points</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="message">Tell Me More</label>
-          <textarea id="message" placeholder="What kind of experience are you looking for? Any must-haves, special occasions, or questions?"></textarea>
-        </div>
+        <button class="btn-submit" onclick="window.open('https://tally.so/r/wAEbyB', '_blank')">window.open</button>
+        <button class="btn-submit" onclick="window.location.href='https://tally.so/r/wAEbyB'">window.location</button>
+        <button class="btn-submit" data-tally-open="wAEbyB" data-tally-layout="modal" data-tally-width="400" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">Pop up</button>
+	<a href="https://tally.so/r/wAEbyB" target="_blank"> <button class="btn-submit">simple a href</button> </a>
 
-        <button class="btn-submit" onclick="handleSubmit()">Send My Inquiry</button>
         <p class="form-note">No commitment required. I'll be in touch within 24–48 hours.</p>
       </div>
 
