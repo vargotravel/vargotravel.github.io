@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Vargo Travel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="solid">
+    <a href="index.html" class="nav-logo">VARGO <span>TRAVEL</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="cta-charcoal">
+   <!-- <h2>Thanks for submitting your information!</h2>
+    <div class="gold-divider"></div>
+    -->
+    <p class="message" id="greeting">Thanks for submitting your information!</p>
+    <div class="gold-divider"></div>
+    <p>I'll be in touch soon.</p>
+    <a href="https://vargotravel.substack.com" class="btn btn-solid" target="_blank">Join My Mailing List</a>
+  </section>
+
+    <script>
+    // Nav scroll behavior (matches other pages)
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Personalize greeting from Tally URL param
+    function getFirstName() {
+      const params = new URLSearchParams(window.location.search);
+      const keys = [
+        'First_Name', 'first_name', 'firstName', 'firstname',
+        'First Name', 'first name', 'name', 'Name'
+      ];
+      for (const key of keys) {
+        const val = params.get(key);
+        if (val && val.trim()) return val.trim();
+      }
+      for (const [, val] of params.entries()) {
+        if (val && /^[A-Za-z]{2,20}$/.test(val.trim())) return val.trim();
+      }
+      return null;
+    }
+
+    const name = getFirstName();
+    if (name) {
+      document.getElementById('greeting').textContent =
+        `Thanks for submitting your information, ${name}!`;
+    }
+  </script>
+
+  <footer>
+    <div class="footer-logo">VARGO <span>TRAVEL</span></div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p>&copy; 2026 Vargo Travel. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
