@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /api/
+Allow: /
+
+Sitemap: https://www.vargotravel.com/sitemap.xml
+
+# Slow down aggressive crawlers
+Crawl-delay: 10

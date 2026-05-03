@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Redirecting... | Vargo Travel</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: "DM Sans", sans-serif;
+      background: #f5ede6;
+      color: #444;
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #1A1612;
+      margin-bottom: 2.5rem;
+    }
+
+    .logo span { color: #C07553; }
+
+    p {
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.25rem;
+      opacity: 0.7;
+    }
+
+    .bar-track {
+      width: 220px;
+      height: 3px;
+      background: rgba(0,0,0,0.12);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 0%;
+      background: #8b7355;
+      border-radius: 99px;
+      transition: width 0.05s linear;
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="logo">VARGO <span>TRAVEL</span></div>
+  <p id="status">Redirecting&hellip;</p>
+  <div class="bar-track">
+    <div class="bar-fill" id="bar"></div>
+  </div>
+
+  <script>
+    (function () {
+      var destinations = {
+        "cruise-2026": "https://villavargo.notion.site/Royal-Caribbean-Cruise-Update-34f66ce9e1cd8089a27ecddbd6308bc1"
+        // Add more entries here:
+        // "paris": "https://...",
+        // "japan": "https://...",
+      };
+
+      var DELAY = 2000; // ms
+
+      var params = new URLSearchParams(window.location.search);
+      var dest = null;
+
+      var itin = params.get("itin");
+      if (itin) {
+        dest = "https://trips.foratravel.com/i/vargo-travel/" + encodeURIComponent(itin);
+      } else {
+        var key = params.get("p");
+        var raw = key && destinations[key];
+        if (raw) {
+          try {
+            var parsed = new URL(raw);
+            if (parsed.protocol === "https:" || parsed.protocol === "http:") {
+              dest = parsed.href;
+            }
+          } catch (e) {}
+        }
+      }
+
+      var bar = document.getElementById("bar");
+
+      if (!dest) {
+        document.getElementById("status").textContent = "...";
+        document.getElementById("status").style.opacity = "1";
+        document.getElementById("status").style.color = "#c0392b";
+      } else {
+        var start = performance.now();
+
+        function tick(now) {
+          var pct = Math.min((now - start) / DELAY * 100, 100);
+          bar.style.width = pct + "%";
+          if (pct < 100) {
+            requestAnimationFrame(tick);
+          } else {
+            window.location.replace(dest);
+          }
+        }
+
+        requestAnimationFrame(tick);
+      }
+    })();
+  </script>
+</body>
+</html>
